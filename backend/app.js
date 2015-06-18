@@ -8,7 +8,8 @@ var express = require('express')
     , bodyParser = require('body-parser')
     , favicon = require('static-favicon')
     , cons = require('consolidate')
-    , debug = require('debug')('app-final');
+    , debug = require('debug')('app-final')
+    , cors = require('express-cors');
 
 // Instanciando aplicación
 var app = express();
@@ -30,6 +31,10 @@ app.set( 'views', path.join( __dirname, 'views' ) );
 
 // Parseo y encodificación de las URLs
 app.use(logger('development'));
+
+app.use(cors({
+    allowedOrigins: ['*']
+}));
 
 app.use(bodyParser.json());
 
@@ -118,7 +123,7 @@ app.get('/', function(req, res) {
 });
 
 
-// Manejo de errores en desarrollo
+/* Manejo de errores en desarrollo */
 if ( app.get('env') === 'development' ) {
 
     app.use(function( err, req, res, next ) {

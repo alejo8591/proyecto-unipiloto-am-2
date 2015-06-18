@@ -610,12 +610,14 @@ module.exports = function( app, db ) {
          * Set de cabeceras para poder permitir acceso
          * de peticiones AJAX de un request externo
          * en estw caso la App
-         * */
+         *
         res.header('Access-Control-Allow-Origin', '*');
 
         res.header('Access-Control-Allow-Methods', 'POST');
 
         res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With, *');
+
+         */
 
         var stmt = db.prepare('INSERT INTO product (name, type, quantity, price) VALUES (?, ?, ?, ?)');
 
@@ -682,12 +684,13 @@ module.exports = function( app, db ) {
          * Set de cabeceras para poder permitir acceso
          * de peticiones AJAX de un request externo
          * en estw caso la App
-         * */
-        res.set('Access-Control-Allow-Origin', '*');
+         **/
+        res.header('Access-Control-Allow-Origin', '*');
 
-        res.set('Access-Control-Allow-Methods', 'POST');
+        res.header('Access-Control-Allow-Methods', 'POST, OPTIONS, POST');
 
-        res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With, *');
+
 
         var stmt = db.prepare("UPDATE product SET name = ?, type = ?, quantity = ?, price = ? WHERE id = ?");
 
@@ -757,11 +760,11 @@ module.exports = function( app, db ) {
          * de peticiones AJAX de un request externo
          * en estw caso la App
          * */
-        res.set('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Origin', '*');
 
-        res.set('Access-Control-Allow-Methods', 'DELETE');
+        res.header('Access-Control-Allow-Methods', 'DELETE');
 
-        res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+        res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
 
         var stmt = db.prepare('DELETE FROM product WHERE id = ?');
 
