@@ -656,6 +656,7 @@ module.exports = function( app, db ) {
                                                                                 '\n name : ' + req.body.name +
                                                                                 '\n type : ' + req.body.type +
                                                                                 '\n price : ' + req.body.price +
+                                                                                '\n quantity : ' + req.body.quantity +
                                                                             '\n }');
 
                                 res.header( 'Content-Type', 'application/json' ).json( rows );
